@@ -46,6 +46,18 @@ This README provides all the necessary instructions to set up, run, and test a D
 
 ## Running the Application
 
+**Note**
+```bash
+If you are using Linux/Mac, you can create an alias instead of writing long commands.
+for example we can simplify the docker command like below.
+
+alias dc="docker-compose -f compose.dev.yaml"
+
+Once the alias set, we can run like below for running tests for example.
+
+dc exec web pytest
+
+```
 ### List available endpoints
 ```bash
 docker-compose -f compose.dev.yaml exec web python manage.py show_urls
