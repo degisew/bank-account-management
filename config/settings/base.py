@@ -76,6 +76,7 @@ THIRD_PARTY_APPS = [
     "dj_rest_auth",
     "rest_framework",
     "rest_framework.authtoken",
+    "django_extensions",
 ]
 
 INSTALLED_APPS = CUSTOM_APPS + DJANGO_APPS + THIRD_PARTY_APPS

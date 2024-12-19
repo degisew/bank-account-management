@@ -46,6 +46,11 @@ This README provides all the necessary instructions to set up, run, and test a D
 
 ## Running the Application
 
+### List available endpoints
+```bash
+docker-compose -f compose.dev.yaml exec web python manage.py show_urls
+```
+
 ### Start the Server
 Run the following command to start the Django development server:
 ```bash
