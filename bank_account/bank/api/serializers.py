@@ -7,6 +7,13 @@ class TransactionSerializer(serializers.ModelSerializer):
         model = Transaction
         fields = ["id", "bank_account", "amount", "transaction_type", "created"]
 
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+
+        representation["amount"] = f"BIRR {instance.amount}"
+
+        return representation
+
 
 class WithdrawDepositSerializer(serializers.ModelSerializer):
     class Meta:
@@ -24,3 +31,10 @@ class BankAccountSerializer(serializers.ModelSerializer):
     def create(self, validated_data) -> BankAccount:
         user = self.context["request"].user
         return BankAccount.objects.create(user=user, **validated_data)
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+
+        representation["balance"] = f"BIRR {instance.balance}"
+
+        return representation

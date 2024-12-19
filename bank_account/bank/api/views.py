@@ -39,7 +39,7 @@ class DepositAPIView(APIView):
     serializer_class = WithdrawDepositSerializer
 
     def post(self, request: Request, pk: int, *args, **kwargs) -> Response:
-        account = get_object_or_404(BankAccount, pk=pk, user=request.user)
+        account: BankAccount = get_object_or_404(BankAccount, pk=pk, user=request.user)
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             amount = serializer.validated_data["amount"]
@@ -60,8 +60,8 @@ class WithdrawAPIView(APIView):
     permission_classes = [IsAuthenticated]
     serializer_class = WithdrawDepositSerializer
 
-    def post(self, request: Request, pk: int, *args, **kwargs):
-        account = get_object_or_404(BankAccount, pk=pk, user=request.user)
+    def post(self, request: Request, pk: int, *args, **kwargs) -> Response:
+        account: BankAccount = get_object_or_404(BankAccount, pk=pk, user=request.user)
         serializer = self.serializer_class(data=request.data)
         if serializer.is_valid():
             amount = serializer.validated_data["amount"]
