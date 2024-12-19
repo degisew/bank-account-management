@@ -39,7 +39,7 @@ This README provides all the necessary instructions to set up, run, and test a D
 
 3. Build and start the Docker containers:
    ```bash
-   docker-compose -f compose.dev.yaml up --build  # detached mode
+   docker-compose -f compose.dev.yaml up --build
    ```
 
 ---
