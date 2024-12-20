@@ -18,6 +18,7 @@ dj-rest-auth = "^7.0.0"
 requests = "^2.32.3"
 django-model-utils = "^5.0.0"
 django-extensions = "^3.2.3"
+drf-spectacular = "^0.28.0"
 
 
 [tool.poetry.group.dev.dependencies]
