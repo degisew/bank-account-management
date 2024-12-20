@@ -38,3 +38,15 @@ class BankAccountSerializer(serializers.ModelSerializer):
         representation["balance"] = f"BIRR {instance.balance}"
 
         return representation
+
+
+class TransferSerializer(serializers.Serializer):
+    transfer_to = serializers.CharField(max_length=12)
+    amount = serializers.DecimalField(max_digits=10, decimal_places=2)
+
+    def validate_transfer_to(self, value):
+        if not value.isdigit():
+            raise serializers.ValidationError("Account number must be numeric.")
+        if int(value) <= 0:
+            raise serializers.ValidationError("Invalid account number.")
+        return value
